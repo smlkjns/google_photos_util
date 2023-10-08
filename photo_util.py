@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import os, pandas as pd
+import os
 from exif import Image
 from datetime import datetime
 
@@ -21,8 +21,8 @@ for file in mf_list:
     dt = False
     with open(file, 'rb') as opened_file:
         if file.endswith('.jpg'):
-            opened_file_exif = Image(opened_file)
             try:
+                opened_file_exif = Image(opened_file)
                 dt_s = opened_file_exif.datetime_original
                 dt = datetime.strptime(dt_s.split(" ")[0], "%Y:%m:%d")
             except:
